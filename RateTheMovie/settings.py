@@ -27,7 +27,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -74,10 +73,23 @@ WSGI_APPLICATION = 'RateTheMovie.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+#ORIGINAL CONFIG
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'RateTheMovie',
+        'USER': 'admin',
+        'PASSWORD': 'Jed&Seb12#',
+        'HOST': 'ratethemovie.cco6u68iz6wn.eu-west-1.rds.amazonaws.com',
+        'PORT': '3306',
     }
 }
 
