@@ -7,5 +7,13 @@
       <jdbc-driver>org.mariadb.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mariadb://ratethemovie.cco6u68iz6wn.eu-west-1.rds.amazonaws.com:3306/RateTheMovie</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="Django default" uuid="714d95d0-bc1c-4e3b-b71c-451999e6c989">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>$PROJECT_DIR$/RateTheMovie/settings.py</remarks>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://ratethemovie.cco6u68iz6wn.eu-west-1.rds.amazonaws.com:3306/RateTheMovie</jdbc-url>
+    </data-source>
   </component>
 </project>
