@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 
 
 class Categories(models.Model):
+    id = models.AutoField(auto_created=True, primary_key=True)
     name = models.TextField()
 
 
