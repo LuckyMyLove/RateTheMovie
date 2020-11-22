@@ -24,9 +24,5 @@ def home(request):
     return render(request, 'dashboard/home.html', context)
 
 
-def logIn(request):
-    return HttpResponse('<h1>This is login page! May be usefull in the future ;D</h1>')
-
-
 def about(request):
     return render(request, 'dashboard/about.html', {'title': 'About Us'})
