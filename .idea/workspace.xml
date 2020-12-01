@@ -16,20 +16,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6be1ac9f-82c1-4038-a4b3-45f57cdb5a20" name="Default Changelist" comment="test">
-      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/sebas.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dashboard/migrations/0001_initial.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dashboard/static/dashboard/main.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/dashboard/about.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/dashboard/base.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/dashboard/home.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/RateTheMovie.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/RateTheMovie.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RateTheMovie/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/RateTheMovie/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RateTheMovie/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/RateTheMovie/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dashboard/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dashboard/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dashboard/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,7 +102,7 @@
       <recent name="D:\Workplace\RateTheMovie\dashboard\static" />
     </key>
   </component>
-  <component name="RunManager" selected="Django Server.RateTheMovie">
+  <component name="RunManager" selected="Python.manage">
     <configuration name="manage" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="RateTheMovie" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -164,10 +154,12 @@
         <item itemvalue="Python.manage" />
         <item itemvalue="Python.manage" />
         <item itemvalue="Python.manage" />
+        <item itemvalue="Python.manage" />
+        <item itemvalue="Python.manage" />
       </list>
     </recent_temporary>
   </component>
-  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -187,11 +179,13 @@
       <workItem from="1605449398838" duration="8543000" />
       <workItem from="1605549979454" duration="3977000" />
       <workItem from="1605554748241" duration="10035000" />
+      <workItem from="1606774702146" duration="361000" />
+      <workItem from="1606849994962" duration="3339000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -219,10 +213,11 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="526" y="214" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1605039565113" />
-    <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1605567507540">
+    <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1606856507141">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1605567507540" />
+    <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1606856507141" />
     <state x="379" y="0" key="CommitChangelistDialog2" timestamp="1605044256773">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -236,26 +231,26 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="636" y="310" key="Github.ShareDialog/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1604831427373" />
-    <state width="1493" height="162" key="GridCell.Tab.0.bottom" timestamp="1605570768925">
+    <state width="1493" height="222" key="GridCell.Tab.0.bottom" timestamp="1606774001123">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1493" height="162" key="GridCell.Tab.0.bottom/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1605570768925" />
-    <state width="1493" height="223" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1605453996904" />
-    <state width="1493" height="162" key="GridCell.Tab.0.center" timestamp="1605570768925">
+    <state width="1493" height="222" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1606774001123" />
+    <state width="1493" height="222" key="GridCell.Tab.0.center" timestamp="1606774001123">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1493" height="162" key="GridCell.Tab.0.center/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1605570768925" />
-    <state width="1493" height="223" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1605453996904" />
-    <state width="1493" height="162" key="GridCell.Tab.0.left" timestamp="1605570768924">
+    <state width="1493" height="222" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1606774001123" />
+    <state width="1493" height="222" key="GridCell.Tab.0.left" timestamp="1606774001123">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1493" height="162" key="GridCell.Tab.0.left/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1605570768924" />
-    <state width="1493" height="223" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1605453996904" />
-    <state width="1493" height="162" key="GridCell.Tab.0.right" timestamp="1605570768925">
+    <state width="1493" height="222" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1606774001123" />
+    <state width="1493" height="222" key="GridCell.Tab.0.right" timestamp="1606774001123">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1493" height="162" key="GridCell.Tab.0.right/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1605570768925" />
-    <state width="1493" height="223" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1605453996904" />
+    <state width="1493" height="222" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1606774001123" />
     <state width="1493" height="261" key="GridCell.Tab.1.bottom" timestamp="1605554737479">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -285,14 +280,15 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1605045265837" />
-    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1605449026998">
+    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1606856415862">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1605449026998" />
-    <state x="550" y="125" key="git4idea.branch.GitSmartOperationDialog" timestamp="1605550288754">
+    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1606856415862" />
+    <state x="550" y="125" key="git4idea.branch.GitSmartOperationDialog" timestamp="1606765700691">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="550" y="125" key="git4idea.branch.GitSmartOperationDialog/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1605550288754" />
+    <state x="550" y="125" key="git4idea.branch.GitSmartOperationDialog/0.0.1536.824@0.0.1536.824" timestamp="1606765700691" />
     <state x="475" y="201" key="git4idea.merge.GitPullDialog" timestamp="1605550301411">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -306,7 +302,18 @@
     </state>
     <state x="491" y="324" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/0.0.1536.824@0.0.1536.824" timestamp="1604836407014" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/RateTheMovie/urls.py</url>
+          <line>28</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/RateTheMovie$manage.coverage" NAME="manage Coverage Results" MODIFIED="1605550384705" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/RateTheMovie$manage.coverage" NAME="manage Coverage Results" MODIFIED="1606771109728" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
