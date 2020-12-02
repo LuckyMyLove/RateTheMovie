@@ -1,0 +1,17 @@
+{% extends "dashboard/base.html" %}
+{% block content %}
+    <div class="row">
+    {% for director in Directors %}
+        <article class="media content-section col-3 mr-4">
+          <div class="media-body">
+            <div class="article-metadata">
+            <h3 class="article-title">{{ director.firstname }} {{ director.surname }}</h3>
+                <small class="text-muted">{{director.birthday }}</small>
+
+            </div>
+            <img class="article-content" src="{{ director.photo }}" width="150px" height="200px"/>
+          </div>
+        </article>
+    {% endfor %}
+    </div>
+{% endblock content %}

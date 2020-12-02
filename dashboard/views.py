@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .models import *
 
 posts = [
     {
@@ -26,3 +27,11 @@ def home(request):
 
 def about(request):
     return render(request, 'dashboard/about.html', {'title': 'About Us'})
+
+
+def directors(request):
+    obj = Directors.objects.all()
+    context = {
+        'Directors': obj,
+    }
+    return render(request, 'dashboard/directors.html', context)
