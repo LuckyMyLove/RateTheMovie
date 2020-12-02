@@ -125,7 +125,7 @@ TIME_ZONE = 'Europe/London'
 
 USE_I18N = True
 
-USE_L10N = True
+USE_L10N = False
 
 USE_TZ = True
 
@@ -139,3 +139,5 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 LOGIN_REDIRECT_URL = 'home'
 LOGIN_URL = 'login'
+DATE_FORMAT = 'd b Y'
+DATE_INPUT_FORMATS = 'd b Y'

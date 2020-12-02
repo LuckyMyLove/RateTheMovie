@@ -24,6 +24,16 @@ def home(request):
     }
     return render(request, 'dashboard/home.html', context)
 
+def movies(request):
+    movies = Movies.objects.all()
+    moviesActors = MoviesActors.objects.all()
+    moviesDirectors = MoviesDirectors.objects.all()
+    context = {
+        'moviesData': movies,
+        'directorsData': moviesDirectors,
+        'actorsData': moviesActors
+    }
+    return render(request, 'dashboard/movies.html', context)
 
 def about(request):
     return render(request, 'dashboard/about.html', {'title': 'About Us'})

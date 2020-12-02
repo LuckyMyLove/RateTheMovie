@@ -1,0 +1,25 @@
+{% extends "dashboard/base.html" %}
+{% block content %}
+    {% for singleMovie in moviesData %}
+        <article class="media content-section">
+          <div class="media-body">
+            <div class="article-metadata">
+              <h2 class="mr-2">{{ singleMovie.title }}</h2>
+              <small class="text-muted">Category: {{ singleMovie.category.name}}, Premiere date: {{ singleMovie.premier_date }}</small>
+            </div>
+            <div>
+               <img class="article-content float-left mr-3" src="{{ singleMovie.picture }}" width="150px" height="200px"/>
+               <p class="article-content">{{ singleMovie.description }}</p>
+                <h5>Directors: </h5>
+{#                {% for singleLine in MoviesDirectors %}#}
+{##}
+{#                {% endfor %}#}
+                <h5>Actors: </h5>
+{#                {% for singleActor in actorsData %}#}
+                    <p>{{ singleActor.actor.firstname }} {{ singleActor.actor.surname }}</p>
+{#                {% endfor %}#}
+            </div>
+          </div>
+        </article>
+    {% endfor %}
+{% endblock content %}
