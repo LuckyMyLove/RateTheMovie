@@ -1,0 +1,17 @@
+{% extends "dashboard/base.html" %}
+{% block content %}
+    <div class="row">
+    {% for singleLine in data %}
+        <article class="media content-section col-3 mr-4">
+          <div class="media-body">
+            <div class="article-metadata">
+            <h3 class="article-title mb-0">{{ singleLine.firstname }}</h3>
+             <h3 class="article-title">{{ singleLine.surname }}</h3>
+                <small class="text-muted pb-2">{{singleLine.birthday }}</small>
+            </div>
+            <img class="article-content" src="{{ singleLine.photo }}" width="150px" height="200px"/>
+          </div>
+        </article>
+    {% endfor %}
+    </div>
+{% endblock content %}
