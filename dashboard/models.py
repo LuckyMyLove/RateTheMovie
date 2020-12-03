@@ -68,7 +68,7 @@ class Movies(models.Model):
         db_table = 'Movies'
 
 
-class MoviesActors(models.Model):
+class Movies_Actors(models.Model):
     movie = models.ForeignKey(Movies, models.DO_NOTHING)
     actor = models.ForeignKey(Actors, models.DO_NOTHING)
 
@@ -77,7 +77,7 @@ class MoviesActors(models.Model):
         db_table = 'Movies_actors'
 
 
-class MoviesDirectors(models.Model):
+class Movies_directors(models.Model):
     movie = models.ForeignKey(Movies, models.DO_NOTHING)
     director = models.ForeignKey(Directors, models.DO_NOTHING)
 

@@ -11,12 +11,21 @@
                <img class="article-content float-left mr-3" src="{{ singleMovie.picture }}" width="150px" height="200px"/>
                <p class="article-content">{{ singleMovie.description }}</p>
                 <h5>Directors: </h5>
-{#                {% for singleLine in MoviesDirectors %}#}
-{##}
+                <p>
+                {% for singleLine in directors %}
+                  {% if singleMovie.id == singleLine.id%}    {#  Tutaj trzeba zmienić if, singleMovie.id jest ok  #}
+                        {{ singleLine.firstname }} {{ singleLine.surname }}
+                    {% endif %}
+                {% endfor %}
+                </p>
+
+{#                {% for singleLine in directors %}#}
+{#                        {{ singleLine.firstname }} {{ singleLine.surname }}#}
 {#                {% endfor %}#}
+
                 <h5>Actors: </h5>
-{#                {% for singleActor in actorsData %}#}
-                    <p>{{ singleActor.actor.firstname }} {{ singleActor.actor.surname }}</p>
+                {#                {% for singleActor in actorsData %}#}
+{#                    <p>{{ ac }} {{ actorsData.actor.surname }}</p>#}
 {#                {% endfor %}#}
             </div>
           </div>

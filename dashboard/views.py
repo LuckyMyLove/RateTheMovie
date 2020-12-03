@@ -26,12 +26,15 @@ def home(request):
 
 def movies(request):
     movies = Movies.objects.all()
-    moviesActors = MoviesActors.objects.all()
-    moviesDirectors = MoviesDirectors.objects.all()
+    directors = Directors.objects.all()
+    moviesDirectors = Movies_directors.objects.all()
+    moviesActors = Movies_Actors.objects.all()
+
     context = {
         'moviesData': movies,
-        'directorsData': moviesDirectors,
-        'actorsData': moviesActors
+        'directors': directors,
+        'moviesDirectors': moviesDirectors,
+        'moviesActors': moviesActors
     }
     return render(request, 'dashboard/movies.html', context)
 
