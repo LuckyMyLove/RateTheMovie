@@ -33,8 +33,8 @@ def movies(request):
     moviesActors = Movies_Actors.objects.all()
 
     context = {
-        'movieRatings': movieRatings,
         'moviesData': movies,
+        'movieRatings': movieRatings,
         'moviesDirectors': moviesDirectors,
         'moviesActors': moviesActors
     }
