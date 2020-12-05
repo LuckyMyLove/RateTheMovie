@@ -45,14 +45,18 @@ def about(request):
 
 def actors(request):
     obj = Actors.objects.all()
+    actorsRatings = ActorsRates.objects.all().values('actors_id').annotate(avg_rate=Avg('rate'))
     context = {
         'data': obj,
+        'ratings': actorsRatings
     }
     return render(request, 'dashboard/actors_directors.html', context)
 
 def directors(request):
     obj = Directors.objects.all()
+    directorsRatings = DirectorsRates.objects.all().values('director_id').annotate(avg_rate=Avg('rate'))
     context = {
         'data': obj,
+        'ratings': directorsRatings
     }
     return render(request, 'dashboard/actors_directors.html', context)

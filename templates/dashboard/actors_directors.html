@@ -2,12 +2,17 @@
 {% block content %}
     <div class="row">
     {% for singleLine in data %}
-        <article class="media content-section col-3 mr-4">
-          <div class="media-body">
+        <article class="media content-section col-3 mr-3">
+          <div class="media-body ">
             <div class="article-metadata">
-            <h3 class="article-title mb-0">{{ singleLine.firstname }}</h3>
-             <h3 class="article-title">{{ singleLine.surname }}</h3>
-                <small class="text-muted pb-2">{{singleLine.birthday }}</small>
+            <h4 class="article-title mb-0">{{ singleLine.firstname }}</h4>
+             <h4 class="article-title">{{ singleLine.surname }}</h4>
+                {% for singleRate in ratings %}
+                    {% if singleRate.actors_id == singleLine.id or singleRate.director_id == singleLine.id%}
+                        <span class="fa fa-star checked"></span> {{ singleRate.avg_rate|floatformat }} <br/>
+                    {% endif %}
+                {% endfor %}
+                <small class="text-muted pb-2">Birthday: {{singleLine.birthday }}</small>
             </div>
             <img class="article-content" src="{{ singleLine.photo }}" width="150px" height="200px"/>
           </div>
