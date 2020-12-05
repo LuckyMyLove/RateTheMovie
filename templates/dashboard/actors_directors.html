@@ -1,22 +1,68 @@
 {% extends "dashboard/base.html" %}
-{% block content %}
-    <div class="row">
-    {% for singleLine in data %}
-        <article class="media content-section col-3 mr-3">
-          <div class="media-body ">
-            <div class="article-metadata">
-            <h4 class="article-title mb-0">{{ singleLine.firstname }}</h4>
-             <h4 class="article-title">{{ singleLine.surname }}</h4>
-                {% for singleRate in ratings %}
-                    {% if singleRate.actors_id == singleLine.id or singleRate.director_id == singleLine.id%}
-                        <span class="fa fa-star checked"></span> {{ singleRate.avg_rate|floatformat }} <br/>
-                    {% endif %}
-                {% endfor %}
-                <small class="text-muted pb-2">Birthday: {{singleLine.birthday }}</small>
-            </div>
-            <img class="article-content" src="{{ singleLine.photo }}" width="150px" height="200px"/>
-          </div>
-        </article>
-    {% endfor %}
+
+{% block modalContent %}
+{% if 'actors' in request.path %} {# If it's Actors site #}
+<h5 class="modal-title">Add Actor</h5>
+{% elif 'directors' in request.path %} {# If it's Directors site #}
+<h5 class="modal-title">Add Director</h5>
+{% endif %}
+<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+  <span aria-hidden="true">&times;</span>
+</button>
+</div>
+<div class="modal-body">
+  <form>
+    <div class="form-group">
+      <label for="firstName">Forename</label>
+      <input type="text" class="form-control" id="firstName" placeholder="Forename" required>
     </div>
+    <div class="form-group">
+      <label for="surname">Surname</label>
+      <input type="text" class="form-control" id="surname" placeholder="Surname" required>
+    </div>
+    <div class="form-group">
+      <label for="birthday">Birthday</label>
+      <input type="date" class="form-control" id="birthday" required>
+    </div>
+    <div class="form-group">
+      <label for="photoURL">Photo URL</label>
+      <input type="url" class="form-control" id="photoURL" placeholder="Photo URL" required>
+    </div>
+    <div class="text-right">
+      <button type="submit" class="btn btn-success">Save</button>
+    </div>
+
+  </form>
+</div>
+{% endblock modalContent%}
+
+{% block content %}
+<div class="row">
+  {% for singleLine in data %}
+  <article class="media content-section col-3 mr-3">
+    <div class="media-body ">
+      <div class="article-metadata">
+        <h4 class="article-title mb-0">{{ singleLine.firstname }}</h4>
+        <h4 class="article-title">{{ singleLine.surname }}</h4>
+        {% for singleRate in ratings %}
+        {% if singleRate.actors_id == singleLine.id or singleRate.director_id == singleLine.id%}
+        <span class="fa fa-star checked"></span> {{ singleRate.avg_rate|floatformat }} <br />
+        {% endif %}
+        {% endfor %}
+        <small class="text-muted pb-2">Birthday: {{singleLine.birthday }}</small>
+      </div>
+      <img class="article-content" src="{{ singleLine.photo }}" width="150px" height="200px" />
+      <p>{{ HttpRequest.path }}</p>
+    </div>
+  </article>
+  {% endfor %}
+</div>
 {% endblock content %}
+
+{% block contentSection %}
+{% if 'actors' in request.path %} {# If it's Actors site #}
+<button class="list-group-item list-group-item-light text-left" data-toggle="modal" data-target="#addDataModal">Add Actor</button>
+{% elif 'directors' in request.path %} {# If it's Directors site #}
+<button class="list-group-item list-group-item-light text-left" data-toggle="modal" data-target="#addDataModal">Add Director</button>
+{% endif %}
+{% endblock contentSection %}

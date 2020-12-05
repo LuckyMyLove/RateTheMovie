@@ -31,12 +31,14 @@ def movies(request):
     movieRatings = Movies_rates.objects.all().values('movie_id').annotate(avg_rate=Avg('rate'))
     moviesDirectors = Movies_directors.objects.all()
     moviesActors = Movies_Actors.objects.all()
+    categories = Categories.objects.all()
 
     context = {
         'moviesData': movies,
         'movieRatings': movieRatings,
         'moviesDirectors': moviesDirectors,
-        'moviesActors': moviesActors
+        'moviesActors': moviesActors,
+        'categories': categories
     }
     return render(request, 'dashboard/movies.html', context)
 

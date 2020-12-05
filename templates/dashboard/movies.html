@@ -1,47 +1,108 @@
 {% extends "dashboard/base.html" %}
 {% load static %}
+
+
+{% block modalContent %}
+<h5 class="modal-title">Add Movie</h5>
+<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+  <span aria-hidden="true">&times;</span>
+</button>
+</div>
+<div class="modal-body">
+  <form>
+    <div class="form-group">
+      <label for="movieTitle">Title</label>
+      <input type="text" class="form-control" id="movieTitle" placeholder="Title" required>
+    </div>
+    <div class="form-group">
+      <label for="movieDesc">Description</label>
+      <input type="text" class="form-control" id="movieDesc" placeholder="Description" required>
+    </div>
+    <div class="form-group">
+      <label for="movieRelDate">Release Date</label>
+      <input type="date" class="form-control" id="movieRelDate" required>
+    </div>
+    <div class="form-group">
+      <label for="movieCat">Category</label>
+      <select class="custom-select form-control" id="movieCat" required>
+        <option selected class="pl-2">Category</option>
+        {% for singleFilter in categories %}
+        <option value="{{ singleFilter.name }}">{{ singleFilter.name }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="moviePicUrl">Picture URL</label>
+      <input type="url" class="form-control" id="moviePicUrl" placeholder="Picture URL" required>
+    </div>
+    <div class="text-right">
+      <button type="submit" class="btn btn-success">Save</button>
+    </div>
+
+  </form>
+</div>
+{% endblock modalContent%}
+
+
 {% block content %}
-    {% for singleMovie in moviesData %}
-        <article class="media content-section">
-          <div class="media-body">
-            <div class="article-metadata">
-              <h2 class="mr-2">{{ singleMovie.title }}</h2>
-              {% for movieRating in movieRatings %}
-                    {% if movieRating.movie_id == singleMovie.id %}
-                        {% for i in '0123456789'|make_list %}
-                            {% if forloop.counter <= movieRating.avg_rate %}
-                                <span class="fa fa-star checked"></span>
-                            {% else %}
-                                <span class="fa fa-star"></span>
-                            {% endif %}
-                        {% endfor %}
-                        ({{ movieRating.avg_rate|floatformat }})
-                    {% endif %}
-                {% endfor %}
-                <br>
-              <small class="text-muted">Category: {{ singleMovie.category.name}}, Premiere date: {{ singleMovie.premier_date }}</small>
-            </div>
-            <div>
-               <img class="article-content float-left mr-3" src="{{ singleMovie.picture }}" width="150px" height="200px"/>
-               <p class="article-content">{{ singleMovie.description }}</p>
-                <div class="list-group">
-                <h5>Directors: </h5>
-                {% for movieDirector in moviesDirectors %}
-                    {% if movieDirector.movie_id == singleMovie.id %}
-                        <a href="/director/{{ movieDirector.director_id }}">{{ movieDirector.director.firstname }} {{ movieDirector.director.surname }}</a>
-                    {% endif %}
-                {% endfor %}
-                </div>
-                <h5 class="pt-2">Actors: </h5>
-                <div class="list-group">
-                {% for movieActor in moviesActors %}
-                    {% if movieActor.movie.id == singleMovie.id %}
-                        <a href="/actor/{{ movieActor.actor_id }}">{{ movieActor.actor.firstname }} {{ movieActor.actor.surname }}</a>
-                    {% endif %}
-                {% endfor %}
-                </div>
-            </div>
-          </div>
-        </article>
-    {% endfor %}
+{% for singleMovie in moviesData %}
+<article class="media content-section">
+  <div class="media-body">
+    <div class="article-metadata">
+      <h2 class="mr-2">{{ singleMovie.title }}</h2>
+      {% for movieRating in movieRatings %}
+      {% if movieRating.movie_id == singleMovie.id %}
+      {% for i in '0123456789'|make_list %}
+      {% if forloop.counter <= movieRating.avg_rate %} <span class="fa fa-star checked"></span>
+        {% else %}
+        <span class="fa fa-star"></span>
+        {% endif %}
+        {% endfor %}
+        ({{ movieRating.avg_rate|floatformat }})
+        {% endif %}
+        {% endfor %}
+        <br>
+        <small class="text-muted">Category: {{ singleMovie.category.name}}, Premiere date: {{ singleMovie.premier_date }}</small>
+    </div>
+    <div>
+      <img class="article-content float-left mr-3" src="{{ singleMovie.picture }}" width="150px" height="200px" />
+      <p class="article-content">{{ singleMovie.description }}</p>
+      <div class="list-group">
+        <h5>Directors: </h5>
+        {% for movieDirector in moviesDirectors %}
+        {% if movieDirector.movie_id == singleMovie.id %}
+        <a href="/director/{{ movieDirector.director_id }}">{{ movieDirector.director.firstname }} {{ movieDirector.director.surname }}</a>
+        {% endif %}
+        {% endfor %}
+      </div>
+      <h5 class="pt-2">Actors: </h5>
+      <div class="list-group">
+        {% for movieActor in moviesActors %}
+        {% if movieActor.movie.id == singleMovie.id %}
+        <a href="/actor/{{ movieActor.actor_id }}">{{ movieActor.actor.firstname }} {{ movieActor.actor.surname }}</a>
+        {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</article>
+{% endfor %}
 {% endblock content %}
+
+{% block contentSection %}
+{% if 'movies' in request.path %} {# If it's Movies site #}
+<button class="list-group-item list-group-item-light text-left" data-toggle="modal" data-target="#addDataModal">Add Movie</button>
+{% endif %}
+{% endblock contentSection %}
+
+{% block filterSection %}
+<button class="list-group-item list-group-item-light text-left" data-toggle="collapse" data-target="#categoryFilter" data-parent="#sideMenu">Filter</button>
+<div id="categoryFilter" class="sublinks collapse">
+  <select class="custom-select" id="inputGroupSelect03"> {# Category filters #}
+    <option selected class="pl-2">Category</option>
+    {% for singleFilter in categories %}
+    <option value="{{ singleFilter.name }}">{{ singleFilter.name }}</option>
+    {% endfor %}
+  </select>
+</div>
+{% endblock filterSection %}
