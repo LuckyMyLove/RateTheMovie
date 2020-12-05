@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.core import serializers
+from django.db.models import Avg
 from .models import *
 
 posts = [
@@ -26,13 +28,13 @@ def home(request):
 
 def movies(request):
     movies = Movies.objects.all()
-    directors = Directors.objects.all()
+    movieRatings = Movies_rates.objects.all().values('movie_id').annotate(avg_rate=Avg('rate'))
     moviesDirectors = Movies_directors.objects.all()
     moviesActors = Movies_Actors.objects.all()
 
     context = {
+        'movieRatings': movieRatings,
         'moviesData': movies,
-        'directors': directors,
         'moviesDirectors': moviesDirectors,
         'moviesActors': moviesActors
     }

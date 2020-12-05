@@ -12,6 +12,10 @@ ul {
   margin: 0;
 }
 
+.checked {
+  color: orange;
+}
+
 .bg-steel {
   background-color: #5f788a;
 }

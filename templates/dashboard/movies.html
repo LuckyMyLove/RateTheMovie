@@ -1,4 +1,5 @@
 {% extends "dashboard/base.html" %}
+{% load static %}
 {% block content %}
     {% for singleMovie in moviesData %}
         <article class="media content-section">
@@ -10,23 +11,37 @@
             <div>
                <img class="article-content float-left mr-3" src="{{ singleMovie.picture }}" width="150px" height="200px"/>
                <p class="article-content">{{ singleMovie.description }}</p>
-                <h5>Directors: </h5>
-                <p>
-                {% for singleLine in directors %}
-                  {% if singleMovie.id == singleLine.id%}    {#  Tutaj trzeba zmienić if, singleMovie.id jest ok  #}
-                        {{ singleLine.firstname }} {{ singleLine.surname }}
+                <h5>Rating:</h5>
+                {% for movieRating in movieRatings %}
+                    {% if movieRating.movie_id == singleMovie.id %}
+                        {% for i in '0123456789'|make_list %}
+                            {% if forloop.counter <= movieRating.avg_rate %}
+                                <span class="fa fa-star checked"></span>
+                            {% else %}
+                                <span class="fa fa-star"></span>
+                            {% endif %}
+                        {% endfor %}
+                        ({{ movieRating.avg_rate }})
                     {% endif %}
                 {% endfor %}
-                </p>
 
-{#                {% for singleLine in directors %}#}
-{#                        {{ singleLine.firstname }} {{ singleLine.surname }}#}
-{#                {% endfor %}#}
 
+                <div class="list-group">
+                <h5>Directors: </h5>
+                {% for movieDirector in moviesDirectors %}
+                    {% if movieDirector.movie_id == singleMovie.id %}
+                        <a href="/director/{{ movieDirector.director_id }}" class="list-group-item">{{ movieDirector.director.firstname }} {{ movieDirector.director.surname }}</a>
+                    {% endif %}
+                {% endfor %}
+                </div>
                 <h5>Actors: </h5>
-                {#                {% for singleActor in actorsData %}#}
-{#                    <p>{{ ac }} {{ actorsData.actor.surname }}</p>#}
-{#                {% endfor %}#}
+                <div class="list-group">
+                {% for movieActor in moviesActors %}
+                    {% if movieActor.movie.id == singleMovie.id %}
+                        <a href="/actor/{{ movieActor.actor_id }}" class="list-group-item">{{ movieActor.actor.firstname }} {{ movieActor.actor.surname }}</a>
+                    {% endif %}
+                {% endfor %}
+                </div>
             </div>
           </div>
         </article>

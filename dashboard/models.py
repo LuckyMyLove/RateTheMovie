@@ -1,7 +1,6 @@
 from django.db import models
 from django.utils.timezone import now
 from django.contrib.auth.models import User
-from django.db import models
 
 
 class Actors(models.Model):
@@ -86,9 +85,9 @@ class Movies_directors(models.Model):
         db_table = 'Movies_directors'
 
 
-class MoviesRates(models.Model):
+class Movies_rates(models.Model):
     movie = models.ForeignKey(Movies, models.DO_NOTHING)
-    user = models.ForeignKey('Users', models.DO_NOTHING)
+    user = models.ForeignKey('AuthUser', models.DO_NOTHING)
     rate = models.IntegerField()
     description = models.TextField(blank=True, null=True)
 
