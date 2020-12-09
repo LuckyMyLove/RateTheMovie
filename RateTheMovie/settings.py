@@ -131,7 +131,7 @@ USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.1/howto/static-files/
+# https://docs.djangoproject.DATE_INPUT_FORMATS com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
 
@@ -140,4 +140,5 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 LOGIN_REDIRECT_URL = 'home'
 LOGIN_URL = 'login'
 DATE_FORMAT = 'd b Y'
-DATE_INPUT_FORMATS = 'd b Y'
+DATE_INPUT_FORMATS = ['%Y-%m-%d']
+

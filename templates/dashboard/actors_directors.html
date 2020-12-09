@@ -11,27 +11,12 @@
 </button>
 </div>
 <div class="modal-body">
-  <form>
-    <div class="form-group">
-      <label for="firstName">Forename</label>
-      <input type="text" class="form-control" id="firstName" placeholder="Forename" required>
-    </div>
-    <div class="form-group">
-      <label for="surname">Surname</label>
-      <input type="text" class="form-control" id="surname" placeholder="Surname" required>
-    </div>
-    <div class="form-group">
-      <label for="birthday">Birthday</label>
-      <input type="date" class="form-control" id="birthday" required>
-    </div>
-    <div class="form-group">
-      <label for="photoURL">Photo URL</label>
-      <input type="url" class="form-control" id="photoURL" placeholder="Photo URL" required>
-    </div>
+  <form method="POST">
+      {% csrf_token %}
+      {{ form.as_p }}
     <div class="text-right">
       <button type="submit" class="btn btn-success">Save</button>
     </div>
-
   </form>
 </div>
 {% endblock modalContent%}

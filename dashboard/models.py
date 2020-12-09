@@ -1,18 +1,19 @@
 from django.db import models
-from django.utils.timezone import now
 from django.contrib.auth.models import User
 
 
 class Actors(models.Model):
-    firstname = models.TextField()
-    surname = models.TextField()
+    firstname = models.CharField(max_length=50)
+    surname = models.CharField(max_length=50)
     birthday = models.DateField()
-    photo = models.TextField(blank=True, null=True)
+    photo = models.URLField()
 
     class Meta:
         managed = False
         db_table = 'Actors'
 
+    def __str__(self):
+        return u'{0}'.format(self.firstname + ' ' + self.surname)
 
 class ActorsRates(models.Model):
     actors = models.ForeignKey(Actors, models.DO_NOTHING)
@@ -32,17 +33,21 @@ class Categories(models.Model):
         managed = False
         db_table = 'Categories'
 
+    def __str__(self):
+        return u'{0}'.format(self.name)
 
 class Directors(models.Model):
     firstname = models.CharField(max_length=50)
     surname = models.CharField(max_length=50)
     birthday = models.DateField()
-    photo = models.TextField(blank=True, null=True)
+    photo = models.URLField()
 
     class Meta:
         managed = False
         db_table = 'Directors'
 
+    def __str__(self):
+        return u'{0}'.format(self.firstname + ' ' + self.surname)
 
 class DirectorsRates(models.Model):
     director = models.ForeignKey(Directors, models.DO_NOTHING)
@@ -56,7 +61,7 @@ class DirectorsRates(models.Model):
 
 
 class Movies(models.Model):
-    title = models.TextField()
+    title = models.CharField(max_length=50)
     description = models.TextField()
     premier_date = models.DateField()
     category = models.ForeignKey(Categories, models.DO_NOTHING)

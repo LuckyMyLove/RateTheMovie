@@ -9,36 +9,12 @@
 </button>
 </div>
 <div class="modal-body">
-  <form>
-    <div class="form-group">
-      <label for="movieTitle">Title</label>
-      <input type="text" class="form-control" id="movieTitle" placeholder="Title" required>
-    </div>
-    <div class="form-group">
-      <label for="movieDesc">Description</label>
-      <input type="text" class="form-control" id="movieDesc" placeholder="Description" required>
-    </div>
-    <div class="form-group">
-      <label for="movieRelDate">Release Date</label>
-      <input type="date" class="form-control" id="movieRelDate" required>
-    </div>
-    <div class="form-group">
-      <label for="movieCat">Category</label>
-      <select class="custom-select form-control" id="movieCat" required>
-        <option selected class="pl-2">Category</option>
-        {% for singleFilter in categories %}
-        <option value="{{ singleFilter.name }}">{{ singleFilter.name }}</option>
-        {% endfor %}
-      </select>
-    </div>
-    <div class="form-group">
-      <label for="moviePicUrl">Picture URL</label>
-      <input type="url" class="form-control" id="moviePicUrl" placeholder="Picture URL" required>
-    </div>
+  <form method="POST">
+      {% csrf_token %}
+      {{ form.as_p }}
     <div class="text-right">
       <button type="submit" class="btn btn-success">Save</button>
     </div>
-
   </form>
 </div>
 {% endblock modalContent%}
