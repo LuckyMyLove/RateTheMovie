@@ -15,6 +15,7 @@ class Actors(models.Model):
     def __str__(self):
         return u'{0}'.format(self.firstname + ' ' + self.surname)
 
+
 class ActorsRates(models.Model):
     actors = models.ForeignKey(Actors, models.DO_NOTHING)
     user = models.ForeignKey('Users', models.DO_NOTHING)
@@ -36,6 +37,7 @@ class Categories(models.Model):
     def __str__(self):
         return u'{0}'.format(self.name)
 
+
 class Directors(models.Model):
     firstname = models.CharField(max_length=50)
     surname = models.CharField(max_length=50)
@@ -48,6 +50,7 @@ class Directors(models.Model):
 
     def __str__(self):
         return u'{0}'.format(self.firstname + ' ' + self.surname)
+
 
 class DirectorsRates(models.Model):
     director = models.ForeignKey(Directors, models.DO_NOTHING)
@@ -72,7 +75,7 @@ class Movies(models.Model):
         db_table = 'Movies'
 
 
-class Movies_Actors(models.Model):
+class MoviesActors(models.Model):
     movie = models.ForeignKey(Movies, models.DO_NOTHING)
     actor = models.ForeignKey(Actors, models.DO_NOTHING)
 
@@ -81,7 +84,7 @@ class Movies_Actors(models.Model):
         db_table = 'Movies_actors'
 
 
-class Movies_directors(models.Model):
+class MoviesDirectors(models.Model):
     movie = models.ForeignKey(Movies, models.DO_NOTHING)
     director = models.ForeignKey(Directors, models.DO_NOTHING)
 
@@ -90,7 +93,7 @@ class Movies_directors(models.Model):
         db_table = 'Movies_directors'
 
 
-class Movies_rates(models.Model):
+class MoviesRates(models.Model):
     movie = models.ForeignKey(Movies, models.DO_NOTHING)
     user = models.ForeignKey('AuthUser', models.DO_NOTHING)
     rate = models.IntegerField()

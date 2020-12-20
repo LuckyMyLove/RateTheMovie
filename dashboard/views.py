@@ -1,9 +1,9 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.db.models import Avg
+from django.db import transaction
 from .models import *
 from .forms import *
-
 
 
 posts = [
@@ -35,15 +35,15 @@ def about(request):
 
 def movies(request):
     movies = Movies.objects.all()
-    movieRatings = Movies_rates.objects.all().values('movie_id').annotate(avg_rate=Avg('rate'))
-    moviesDirectors = Movies_directors.objects.all()
-    moviesActors = Movies_Actors.objects.all()
+    movie_ratings = MoviesRates.objects.all().values('movie_id').annotate(avg_rate=Avg('rate'))
+    moviesDirectors = MoviesDirectors.objects.all()
+    moviesActors = MoviesActors.objects.all()
     categories = Categories.objects.all()
     form = MoviesForm()
 
     context = {
         'moviesData': movies,
-        'movieRatings': movieRatings,
+        'movieRatings': movie_ratings,
         'moviesDirectors': moviesDirectors,
         'moviesActors': moviesActors,
         'categories': categories,
@@ -52,19 +52,38 @@ def movies(request):
     if request.method == 'POST':
         form = MoviesForm(request.POST)
         if form.is_valid():
-            form.save()
+            with transaction.atomic():
+                movie = form.save()
+                actor_id = int(form.data.get('actors'))
+                director_id = form.data.get('directors')
+                updateMoviesActors(actor_id, movie.id)
+                updateMovieDirectors(director_id, movie.id)
         return HttpResponseRedirect('/movies/')
 
     return render(request, 'dashboard/movies.html', context)
 
 
+def updateMoviesActors(actor_id, movie_id):
+    movie_actors = MoviesActors()
+    movie_actors.movie_id = movie_id
+    movie_actors.actor_id = actor_id
+    movie_actors.save()
+
+
+def updateMovieDirectors(director_id, movie_id):
+    movie_director = MoviesDirectors()
+    movie_director.movie_id= movie_id
+    movie_director.director_id = director_id
+    movie_director.save()
+
+
 def actors(request):
     obj = Actors.objects.all()
-    actorsRatings = ActorsRates.objects.all().values('actors_id').annotate(avg_rate=Avg('rate'))
+    actors_ratings = ActorsRates.objects.all().values('actors_id').annotate(avg_rate=Avg('rate'))
     form = ActorsForm()
     context = {
         'data': obj,
-        'ratings': actorsRatings,
+        'ratings': actors_ratings,
         'form': form
     }
 
@@ -75,7 +94,6 @@ def actors(request):
         return HttpResponseRedirect('/actors/')
 
     return render(request, 'dashboard/actors_directors.html', context)
-
 
 
 def directors(request):
