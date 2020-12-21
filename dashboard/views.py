@@ -40,6 +40,7 @@ def movies(request):
     moviesActors = MoviesActors.objects.all()
     categories = Categories.objects.all()
     form = MoviesForm()
+    category_form = CategoryForm()
 
     context = {
         'moviesData': movies,
@@ -47,18 +48,22 @@ def movies(request):
         'moviesDirectors': moviesDirectors,
         'moviesActors': moviesActors,
         'categories': categories,
-        'form': form
+        'form': form,
+        'categoryForm': category_form
     }
     if request.method == 'POST':
-        form = MoviesForm(request.POST)
-        if form.is_valid():
-            with transaction.atomic():
-                movie = form.save()
-                actor_id = int(form.data.get('actors'))
-                director_id = form.data.get('directors')
-                updateMoviesActors(actor_id, movie.id)
-                updateMovieDirectors(director_id, movie.id)
-        return HttpResponseRedirect('/movies/')
+        if 'categories' in request.POST:
+            context['moviesData'] = Movies.objects.filter(category_id=request.POST['categories'])
+        else:
+            form = MoviesForm(request.POST)
+            if form.is_valid():
+                with transaction.atomic():
+                    movie = form.save()
+                    actor_id = int(form.data.get('actors'))
+                    director_id = form.data.get('directors')
+                    updateMoviesActors(actor_id, movie.id)
+                    updateMovieDirectors(director_id, movie.id)
+            return HttpResponseRedirect('/movies/')
 
     return render(request, 'dashboard/movies.html', context)
 

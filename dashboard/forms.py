@@ -1,5 +1,5 @@
 from django import forms
-from .models import Actors, Directors, Movies
+from .models import Actors, Directors, Movies, Categories
 
 
 class ActorsForm(forms.ModelForm):
@@ -48,4 +48,18 @@ class MoviesForm(forms.ModelForm):
             'category': forms.Select(attrs={'class': 'form-control', 'placeholder': 'Category'}),
             # attrs={'class': 'form-control', 'placeholder': 'Category'}
             'picture': forms.URLInput(attrs={'class': 'form-control', 'placeholder': 'Picture URL', 'type': 'url'}),
+        }
+
+
+class CategoryForm(forms.ModelForm):
+    categories = forms.ModelChoiceField(queryset=Categories.objects.all(),
+                                        widget=forms.Select(attrs={'class': 'form-control',
+                                                                   'placeholder': 'Category',
+                                                                   'onchange': 'categoryForm.submit();'}))
+
+    class Meta:
+        model = Categories
+        fields = "__all__"
+        widgets = {
+            'name': forms.HiddenInput(attrs={'class': 'form-control', 'placeholder': 'Category'})
         }
