@@ -1,0 +1,62 @@
+{% extends "dashboard/base.html" %}
+
+{% block content %}
+    <article class="media content-section col-12 mr-3">
+        <div class="media-body">
+            <div class="article-metadata">
+                <a href="{% url 'moviesDetails' object.id %}" style="text-decoration: none; color: black">
+                    <h2 class="mr-2">{{ object.title }}</h2>
+                </a>
+                 <div>{% for singleRate in rates %}
+                            {% if singleRate.movie_id == object.id %}
+                                {% for i in '0123456789'|make_list %}
+                                    {% if forloop.counter <= singleRate.avg_rate %}
+                                        <span class="fa fa-star checked"></span>
+                                    {% else %}
+                                        <span class="fa fa-star"></span>
+                                    {% endif %}
+                                {% endfor %}
+                                ({{ singleRate.avg_rate|floatformat }})
+                            {% endif %}
+                     {% endfor %}</div>
+                <small class="text-muted">Category: {{ object.category.name }}, Premiere
+                    date: {{ object.premier_date }}</small>
+            </div>
+            <div>
+                 <a href="{% url 'moviesDetails' object.id%}" style="text-decoration: none; color: black">
+                    <img class="article-content float-left mr-3" src="{{ object.picture }}" width="150px"
+                     height="200px"/>
+                </a>
+                <p class="article-content">{{ object.description }}</p>
+                <div class="list-group">
+                    <h5>Directors: </h5>
+                    {% for movieDirector in moviesDirectors %}
+                        {% if movieDirector.movie_id == object.id %}
+                            <a href="/directors/{{ movieDirector.director_id }}">{{ movieDirector.director.firstname }} {{ movieDirector.director.surname }}</a>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                <h5 class="pt-2">Actors: </h5>
+                <div class="list-group">
+                    {% for movieActor in moviesActors %}
+                        {% if movieActor.movie_id == object.id %}
+                            <a href="/actors/{{ movieActor.actor_id }}">{{ movieActor.actor.firstname }} {{ movieActor.actor.surname }}</a>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                <h5 class="pt-2">Opinions: </h5>
+                {% for singleRate in specificRates %}
+                    {% if singleRate.movie_id == object.id %}
+                        <p> {{ singleRate.user.username }} ({{ singleRate.rate }}<span class="fa fa-star checked"></span>):
+                            <i>{{ singleRate.description }}</i></p>
+                    {% endif %}
+                  {% endfor %}
+            </div>
+        </div>
+    </article>
+{% endblock content %}
+
+
+{% block contentSection %}
+<button class="list-group-item list-group-item-light text-left">Rate the Movie</button>
+{% endblock contentSection %}

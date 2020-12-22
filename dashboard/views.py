@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.db.models import Avg
 from django.db import transaction
+from django.views.generic import DetailView
 from .models import *
 from .forms import *
 
@@ -82,13 +83,27 @@ def updateMovieDirectors(director_id, movie_id):
     movie_director.save()
 
 
+class moviesDetails(DetailView):
+    model = Movies
+    template_name = 'dashboard/movies_details.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['rates'] = MoviesRates.objects.all().values('movie_id').annotate(avg_rate=Avg('rate'))
+        context['specificRates'] = MoviesRates.objects.all()
+        context['moviesActors'] = MoviesActors.objects.all()
+        context['moviesDirectors'] = MoviesDirectors.objects.all()
+
+        return context
+
+
 def actors(request):
     obj = Actors.objects.all()
-    actors_ratings = ActorsRates.objects.all().values('actors_id').annotate(avg_rate=Avg('rate'))
+    actorsRatings = ActorsRates.objects.all().values('actors_id').annotate(avg_rate=Avg('rate'))
     form = ActorsForm()
     context = {
         'data': obj,
-        'ratings': actors_ratings,
+        'ratings': actorsRatings,
         'form': form
     }
 
@@ -99,6 +114,19 @@ def actors(request):
         return HttpResponseRedirect('/actors/')
 
     return render(request, 'dashboard/actors_directors.html', context)
+
+
+class actorsDetails(DetailView):
+    model = Actors
+    template_name = 'dashboard/actors_directors_details.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['rates'] = ActorsRates.objects.all().values('actors_id').annotate(avg_rate=Avg('rate'))
+        context['specificRates'] = ActorsRates.objects.all()
+        context['moviesConnection'] = MoviesActors.objects.all()
+
+        return context
 
 
 def directors(request):
@@ -119,3 +147,14 @@ def directors(request):
     return render(request, 'dashboard/actors_directors.html', context)
 
 
+class directorsDetails(DetailView):
+    model = Directors
+    template_name = 'dashboard/actors_directors_details.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['rates'] = DirectorsRates.objects.all().values('director_id').annotate(avg_rate=Avg('rate'))
+        context['specificRates'] = DirectorsRates.objects.all()
+        context['moviesConnection'] = MoviesDirectors.objects.all()
+
+        return context

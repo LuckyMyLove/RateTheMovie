@@ -1,0 +1,54 @@
+{% extends "dashboard/base.html" %}
+
+{% block content %}
+<div class="row">
+  <article class="media content-section col-12 mr-3" >
+    <div class="media-body">
+      <div class="article-metadata">
+        <h4 class="article-title">{{ object.firstname }} {{ object.surname }}</h4>
+        <div>{% for singleRate in rates %}
+            {% if singleRate.actors_id == object.id or singleRate.director_id == object.id %}
+                {% for i in '0123456789'|make_list %}
+                    {% if forloop.counter <= singleRate.avg_rate %}
+                        <span class="fa fa-star checked"></span>
+                    {% else %}
+                        <span class="fa fa-star"></span>
+                    {% endif %}
+                {% endfor %}
+                ({{ singleRate.avg_rate|floatformat }})
+            {% endif %}
+        {% endfor %}</div>
+      <small class="text-muted pb-2">Birthday: {{object.birthday }}</small>
+      </div>
+      <img class="article-content float-left mr-3" src="{{ object.photo }}" width="150px" height="200px" />
+      <div class="list-group">
+       <h5>Movies: </h5>
+        {% for singleMovie in moviesConnection%}
+            {% if singleMovie.actor_id == object.id or singleMovie.director_id == object.id %}
+                <p><a href="/movies/{{ singleMovie.movie.id }}">{{ singleMovie.movie.title  }}</a></p>
+            {% endif %}
+        {% endfor %}
+
+
+        <h5 class="pt-2">Opinions: </h5>
+        {% for singleRate in specificRates %}
+            {% if singleRate.actors_id == object.id or singleRate.director_id == object.id %}
+                <p> {{ singleRate.user.username }} ({{ singleRate.rate }}<span class="fa fa-star checked"></span>):
+                    <i>{{ singleRate.description }}</i></p>
+            {% endif %}
+        {% endfor %}
+
+    </div>
+    </div>
+  </article>
+</div>
+{% endblock content %}
+
+
+{% block contentSection %}
+{% if 'actors' in request.path %} {# If it's Actors site #}
+<button class="list-group-item list-group-item-light text-left">Rate the Actor</button>
+{% elif 'directors' in request.path %} {# If it's Directors site #}
+<button class="list-group-item list-group-item-light text-left">Rate the Director</button>
+{% endif %}
+{% endblock contentSection %}

@@ -24,8 +24,14 @@
 {% block content %}
 <div class="row">
   {% for singleLine in data %}
-  <article class="media content-section col-3 mr-3">
-    <div class="media-body ">
+  <article class="media content-section col-3 mr-3" >
+    {% if 'actors' in request.path %} {# If it's Actors site #}
+    <a href="{% url 'actorsDetails' singleLine.id%}" style="text-decoration: none; color: black">
+    {% elif 'directors' in request.path %} {# If it's Directors site #}
+    <a href="{% url 'directorsDetails' singleLine.id%}" style="text-decoration: none; color: black">
+    {% endif %}
+
+    <div class="media-body">
       <div class="article-metadata">
         <h4 class="article-title mb-0">{{ singleLine.firstname }}</h4>
         <h4 class="article-title">{{ singleLine.surname }}</h4>
@@ -39,6 +45,7 @@
       <img class="article-content" src="{{ singleLine.photo }}" width="150px" height="200px" />
       <p>{{ HttpRequest.path }}</p>
     </div>
+    </a>
   </article>
   {% endfor %}
 </div>
