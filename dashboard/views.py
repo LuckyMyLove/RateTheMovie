@@ -40,8 +40,8 @@ def movies(request):
     moviesDirectors = MoviesDirectors.objects.all()
     moviesActors = MoviesActors.objects.all()
     categories = Categories.objects.all()
-    form = MoviesForm()
-    category_form = CategoryForm()
+    form = moviesForm()
+    category_form = categoryForm()
 
     context = {
         'moviesData': movies,
@@ -56,7 +56,7 @@ def movies(request):
         if 'categories' in request.POST:
             context['moviesData'] = Movies.objects.filter(category_id=request.POST['categories'])
         else:
-            form = MoviesForm(request.POST)
+            form = moviesForm(request.POST)
             if form.is_valid():
                 with transaction.atomic():
                     movie = form.save()
@@ -90,9 +90,9 @@ class moviesDetails(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['rates'] = MoviesRates.objects.all().values('movie_id').annotate(avg_rate=Avg('rate'))
-        context['specificRates'] = MoviesRates.objects.all()
-        context['moviesActors'] = MoviesActors.objects.all()
-        context['moviesDirectors'] = MoviesDirectors.objects.all()
+        context['specificRates'] = MoviesRates.objects.filter(movie_id=self.kwargs.get('pk', 0))
+        context['moviesActors'] = MoviesActors.objects.filter(movie_id=self.kwargs.get('pk', 0))
+        context['moviesDirectors'] = MoviesDirectors.objects.filter(movie_id=self.kwargs.get('pk', 0))
 
         return context
 
@@ -100,7 +100,7 @@ class moviesDetails(DetailView):
 def actors(request):
     obj = Actors.objects.all()
     actorsRatings = ActorsRates.objects.all().values('actors_id').annotate(avg_rate=Avg('rate'))
-    form = ActorsForm()
+    form = actorsForm()
     context = {
         'data': obj,
         'ratings': actorsRatings,
@@ -108,7 +108,7 @@ def actors(request):
     }
 
     if request.method == 'POST':
-        form = ActorsForm(request.POST)
+        form = actorsForm(request.POST)
         if form.is_valid():
             form.save()
         return HttpResponseRedirect('/actors/')
@@ -123,8 +123,9 @@ class actorsDetails(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['rates'] = ActorsRates.objects.all().values('actors_id').annotate(avg_rate=Avg('rate'))
-        context['specificRates'] = ActorsRates.objects.all()
-        context['moviesConnection'] = MoviesActors.objects.all()
+        context['specificRates'] = ActorsRates.objects.filter(actors_id=self.kwargs.get('pk', 0))
+        context['moviesConnection'] = MoviesActors.objects.filter(actor_id=self.kwargs.get('pk', 0))
+
 
         return context
 
@@ -132,14 +133,14 @@ class actorsDetails(DetailView):
 def directors(request):
     obj = Directors.objects.all()
     directorsRatings = DirectorsRates.objects.all().values('director_id').annotate(avg_rate=Avg('rate'))
-    form = DirectorsForm()
+    form = directorsForm()
     context = {
         'data': obj,
         'ratings': directorsRatings,
         'form': form
     }
     if request.method == 'POST':
-        form = DirectorsForm(request.POST)
+        form = directorsForm(request.POST)
         if form.is_valid():
             form.save()
         return HttpResponseRedirect('/directors/')
@@ -154,7 +155,7 @@ class directorsDetails(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['rates'] = DirectorsRates.objects.all().values('director_id').annotate(avg_rate=Avg('rate'))
-        context['specificRates'] = DirectorsRates.objects.all()
-        context['moviesConnection'] = MoviesDirectors.objects.all()
+        context['specificRates'] = DirectorsRates.objects.filter(director_id=self.kwargs.get('pk', 0))
+        context['moviesConnection'] = MoviesDirectors.objects.filter(director_id=self.kwargs.get('pk', 0))
 
         return context
