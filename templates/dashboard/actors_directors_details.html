@@ -6,17 +6,18 @@
     <div class="media-body">
       <div class="article-metadata">
         <h4 class="article-title">{{ object.firstname }} {{ object.surname }}</h4>
-        <div>{% for singleRate in rates %}
-          {% if singleRate.actors_id == object.id or singleRate.director_id == object.id %}
-          {% for i in '0123456789'|make_list %}
-          {% if forloop.counter <= singleRate.avg_rate %} <span class="fa fa-star checked"></span>
-            {% else %}
-            <span class="fa fa-star"></span>
+        <div>
+        {% for singleRate in rates %}
+            {% if singleRate.actors_id == object.id or singleRate.director_id == object.id %}
+                {% for i in '0123456789'|make_list %}
+                  {% if forloop.counter <= singleRate.avg_rate %} <span class="fa fa-star checked"></span>
+                    {% else %}
+                        <span class="fa fa-star"></span>
+                  {% endif %}
+                {% endfor %}
+                ({{ singleRate.avg_rate|floatformat }})
             {% endif %}
-            {% endfor %}
-            ({{ singleRate.avg_rate|floatformat }})
-            {% endif %}
-            {% endfor %}</div>
+        {% endfor %}</div>
         <small class="text-muted pb-2">Birthday: {{object.birthday }}</small>
       </div>
       <img class="article-content float-left mr-3" src="{{ object.photo }}" width="150px" height="200px" />
