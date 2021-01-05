@@ -15,10 +15,10 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6be1ac9f-82c1-4038-a4b3-45f57cdb5a20" name="Default Changelist" comment="Added detail sites for Movies, Actors and Directors">
+    <list default="true" id="6be1ac9f-82c1-4038-a4b3-45f57cdb5a20" name="Default Changelist" comment="Small CSS fix for heroku v.2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RateTheMovie/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/RateTheMovie/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/dashboard/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/dashboard/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -193,7 +193,7 @@
       <workItem from="1608741443127" duration="2718000" />
       <workItem from="1609669390233" duration="5882000" />
       <workItem from="1609790477701" duration="1006000" />
-      <workItem from="1609867637410" duration="4427000" />
+      <workItem from="1609867637410" duration="5693000" />
     </task>
     <task id="LOCAL-00001" summary="models.py update">
       <created>1606857183006</created>
@@ -237,7 +237,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608676134507</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Small CSS fix for heroku">
+      <created>1609872700603</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1609872700603</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -264,7 +271,8 @@
     <MESSAGE value="Added first template of Movies site" />
     <MESSAGE value="Final update of Movies site" />
     <MESSAGE value="Added detail sites for Movies, Actors and Directors" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added detail sites for Movies, Actors and Directors" />
+    <MESSAGE value="Small CSS fix for heroku" />
+    <option name="LAST_COMMIT_MESSAGE" value="Small CSS fix for heroku" />
   </component>
   <component name="WindowStateProjectService">
     <state x="361" y="71" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1608576028473">
@@ -284,10 +292,10 @@
     </state>
     <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1605567507540" />
     <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1606856507141" />
-    <state x="379" y="0" key="CommitChangelistDialog2" timestamp="1609872661419">
+    <state x="379" y="0" key="CommitChangelistDialog2" timestamp="1609873939029">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="379" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1609872661419" />
+    <state x="379" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1609873939029" />
     <state x="549" y="154" key="FileChooserDialogImpl" timestamp="1605449541873">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -354,10 +362,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="657" y="327" key="VCS.EditChangelistDialog/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1605550056259" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1609676105705">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1609872707436">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1609676105705" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1609872707436" />
     <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1609790521772">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
