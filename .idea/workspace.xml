@@ -17,8 +17,7 @@
   <component name="ChangeListManager">
     <list default="true" id="6be1ac9f-82c1-4038-a4b3-45f57cdb5a20" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Procfile" beforeDir="false" afterPath="$PROJECT_DIR$/Procfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RateTheMovie/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/RateTheMovie/settings.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -193,7 +192,7 @@
       <workItem from="1608741443127" duration="2718000" />
       <workItem from="1609669390233" duration="5882000" />
       <workItem from="1609790477701" duration="1006000" />
-      <workItem from="1609867637410" duration="1418000" />
+      <workItem from="1609867637410" duration="1691000" />
     </task>
     <task id="LOCAL-00001" summary="models.py update">
       <created>1606857183006</created>

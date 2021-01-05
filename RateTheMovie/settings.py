@@ -25,7 +25,7 @@ SECRET_KEY = 'h#=m#0uieqy86road80_3_32l!$n7af&e9o1gf__8uzm-v4nwz'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['ratethemovie.herokuapp.com']
 
 # Application definition
 
