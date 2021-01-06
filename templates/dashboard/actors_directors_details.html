@@ -47,7 +47,7 @@
 {% block contentSection %}
 {% if 'actors' in request.path %} {# If it's Actors site #}
 <button class="list-group-item list-group-item-light text-left" data-toggle="collapse" data-target="#ratingFilter" data-parent="#sideMenu">Rate the Actor</button>
-<div id="ratingFilter" class="sublinks collapse">
+<div id="ratingFilter" class="sublinks collapse pt-3">
     <form name="new_rate" method="POST">
         {% csrf_token %}
         {{ rating_actor_form.as_p }}
@@ -58,7 +58,7 @@
 </div>
 {% elif 'directors' in request.path %} {# If it's Directors site #}
 <button class="list-group-item list-group-item-light text-left" data-toggle="collapse" data-target="#ratingFilter" data-parent="#sideMenu">Rate the Director</button>
-    <div id="ratingFilter" class="sublinks collapse">
+    <div id="ratingFilter" class="sublinks collapse pt-3">
         <form name="new_director_rate" method="POST">
             {% csrf_token %}
             {{ rating_director_form.as_p }}

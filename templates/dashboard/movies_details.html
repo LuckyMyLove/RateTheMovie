@@ -60,7 +60,7 @@
 
 {% block contentSection %}
     <button class="list-group-item list-group-item-light text-left" data-toggle="collapse" data-target="#ratingFilter" data-parent="#sideMenu">Rate the Movie</button>
-    <div id="ratingFilter" class="sublinks collapse">
+    <div id="ratingFilter" class="sublinks collapse pt-3">
         <form name="new_movie_rate" method="POST">
             {% csrf_token %}
             {{ rating_movie_form.as_p }}
