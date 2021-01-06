@@ -85,6 +85,7 @@ def updateMovieDirectors(director_id, movie_id):
 
 class moviesDetails(DetailView):
     model = Movies
+    rating_actor_form = RatingMovieForm()
     template_name = 'dashboard/movies_details.html'
 
     def get_context_data(self, **kwargs):
@@ -93,8 +94,21 @@ class moviesDetails(DetailView):
         context['specificRates'] = MoviesRates.objects.filter(movie_id=self.kwargs.get('pk', 0))
         context['moviesActors'] = MoviesActors.objects.filter(movie_id=self.kwargs.get('pk', 0))
         context['moviesDirectors'] = MoviesDirectors.objects.filter(movie_id=self.kwargs.get('pk', 0))
+        context['rating_movie_form'] = RatingMovieForm
 
         return context
+
+    def post(self, request, *args, **kwargs):
+        form = RatingMovieForm(request.POST)
+        if form.is_valid() and request.user.is_authenticated:
+            rate = MoviesRates()
+            rate.movie_id = kwargs['pk']
+            rate.rate = form.data.get('rate')
+            rate.description = form.data.get('description')
+            rate.user_id = request.user.id
+            rate.save()
+
+        return HttpResponseRedirect("/movies/"+str(kwargs['pk']))
 
 
 def actors(request):
@@ -118,7 +132,7 @@ def actors(request):
 
 class actorsDetails(DetailView):
     model = Actors
-    rating_form = ratingForm()
+    rating_actor_form = RatingActorForm()
     template_name = 'dashboard/actors_directors_details.html'
 
     def get_context_data(self, **kwargs):
@@ -126,22 +140,21 @@ class actorsDetails(DetailView):
         context['rates'] = ActorsRates.objects.all().values('actors_id').annotate(avg_rate=Avg('rate'))
         context['specificRates'] = ActorsRates.objects.filter(actors_id=self.kwargs.get('pk', 0))
         context['moviesConnection'] = MoviesActors.objects.filter(actor_id=self.kwargs.get('pk', 0))
-        context['rating_form'] = ratingForm
+        context['rating_actor_form'] = RatingActorForm
 
         return context
 
     def post(self, request, *args, **kwargs):
-        form = ratingForm(request.POST)
-        actors_rate = ActorsRates()
+        form = RatingActorForm(request.POST)
         if form.is_valid() and request.user.is_authenticated:
-            actors_rate.actors_id = kwargs['pk']
-            actors_rate.rate = form.data.get('rate')
-            actors_rate.description = form.data.get('description')
-            actors_rate.user_id = request.user.id
-            actors_rate.save()
+            rate = ActorsRates()
+            rate.actors_id = kwargs['pk']
+            rate.rate = form.data.get('rate')
+            rate.description = form.data.get('description')
+            rate.user_id = request.user.id
+            rate.save()
 
         return HttpResponseRedirect("/actors/"+str(kwargs['pk']))
-
 
 
 def directors(request):
@@ -164,6 +177,7 @@ def directors(request):
 
 class directorsDetails(DetailView):
     model = Directors
+    rating_director_form = RatingDirectorForm()
     template_name = 'dashboard/actors_directors_details.html'
 
     def get_context_data(self, **kwargs):
@@ -171,5 +185,18 @@ class directorsDetails(DetailView):
         context['rates'] = DirectorsRates.objects.all().values('director_id').annotate(avg_rate=Avg('rate'))
         context['specificRates'] = DirectorsRates.objects.filter(director_id=self.kwargs.get('pk', 0))
         context['moviesConnection'] = MoviesDirectors.objects.filter(director_id=self.kwargs.get('pk', 0))
+        context['rating_director_form'] = RatingDirectorForm
 
         return context
+
+    def post(self, request, *args, **kwargs):
+        form = RatingDirectorForm(request.POST)
+        if form.is_valid() and request.user.is_authenticated:
+            rate = DirectorsRates()
+            rate.director_id = kwargs['pk']
+            rate.rate = form.data.get('rate')
+            rate.description = form.data.get('description')
+            rate.user_id = request.user.id
+            rate.save()
+
+        return HttpResponseRedirect("/directors/"+str(kwargs['pk']))
