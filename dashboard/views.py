@@ -57,7 +57,7 @@ def movies(request):
             context['moviesData'] = Movies.objects.filter(category_id=request.POST['categories'])
         else:
             form = moviesForm(request.POST)
-            if form.is_valid():
+            if form.is_valid() and request.user.is_authenticated:
                 with transaction.atomic():
                     movie = form.save()
                     actor_id = int(form.data.get('actors'))
@@ -101,12 +101,13 @@ class moviesDetails(DetailView):
     def post(self, request, *args, **kwargs):
         form = RatingMovieForm(request.POST)
         if form.is_valid() and request.user.is_authenticated:
-            rate = MoviesRates()
-            rate.movie_id = kwargs['pk']
-            rate.rate = form.data.get('rate')
-            rate.description = form.data.get('description')
-            rate.user_id = request.user.id
-            rate.save()
+            if MoviesRates.objects.filter(user_id=request.user.id, movie_id=kwargs['pk']).count() == 0:
+                rate = MoviesRates()
+                rate.movie_id = kwargs['pk']
+                rate.rate = form.data.get('rate')
+                rate.description = form.data.get('description')
+                rate.user_id = request.user.id
+                rate.save()
 
         return HttpResponseRedirect("/movies/"+str(kwargs['pk']))
 
@@ -123,7 +124,7 @@ def actors(request):
 
     if request.method == 'POST':
         form = actorsForm(request.POST)
-        if form.is_valid():
+        if form.is_valid() and request.user.is_authenticated:
             form.save()
         return HttpResponseRedirect('/actors/')
 
@@ -147,12 +148,13 @@ class actorsDetails(DetailView):
     def post(self, request, *args, **kwargs):
         form = RatingActorForm(request.POST)
         if form.is_valid() and request.user.is_authenticated:
-            rate = ActorsRates()
-            rate.actors_id = kwargs['pk']
-            rate.rate = form.data.get('rate')
-            rate.description = form.data.get('description')
-            rate.user_id = request.user.id
-            rate.save()
+            if ActorsRates.objects.filter(user_id=request.user.id, actors_id=kwargs['pk']).count() == 0:
+                rate = ActorsRates()
+                rate.actors_id = kwargs['pk']
+                rate.rate = form.data.get('rate')
+                rate.description = form.data.get('description')
+                rate.user_id = request.user.id
+                rate.save()
 
         return HttpResponseRedirect("/actors/"+str(kwargs['pk']))
 
@@ -168,7 +170,7 @@ def directors(request):
     }
     if request.method == 'POST':
         form = directorsForm(request.POST)
-        if form.is_valid():
+        if form.is_valid() and request.user.is_authenticated:
             form.save()
         return HttpResponseRedirect('/directors/')
 
@@ -192,11 +194,12 @@ class directorsDetails(DetailView):
     def post(self, request, *args, **kwargs):
         form = RatingDirectorForm(request.POST)
         if form.is_valid() and request.user.is_authenticated:
-            rate = DirectorsRates()
-            rate.director_id = kwargs['pk']
-            rate.rate = form.data.get('rate')
-            rate.description = form.data.get('description')
-            rate.user_id = request.user.id
-            rate.save()
+            if DirectorsRates.objects.filter(user_id=request.user.id, director_id=kwargs['pk']).count() == 0:
+                rate = DirectorsRates()
+                rate.director_id = kwargs['pk']
+                rate.rate = form.data.get('rate')
+                rate.description = form.data.get('description')
+                rate.user_id = request.user.id
+                rate.save()
 
         return HttpResponseRedirect("/directors/"+str(kwargs['pk']))
