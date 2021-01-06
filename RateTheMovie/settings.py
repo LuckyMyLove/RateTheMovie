@@ -23,12 +23,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'h#=m#0uieqy86road80_3_32l!$n7af&e9o1gf__8uzm-v4nwz'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['ratethemovie.herokuapp.com']
+ALLOWED_HOSTS = ['ratethemovie.herokuapp.com', '127.0.0.1']
 
 # Application definition
 
@@ -81,20 +81,12 @@ WSGI_APPLICATION = 'RateTheMovie.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 #ORIGINAL CONFIG
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'RateTheMovie',
-        'USER': 'admin',
-        'PASSWORD': 'Jed&Seb12#',
+        'USER': os.environ.get('RateTheMovie_DB_USER'),
+        'PASSWORD': os.environ.get('RateTheMovie_DB_PASSWORD'),
         'HOST': 'ratethemovie.cco6u68iz6wn.eu-west-1.rds.amazonaws.com',
         'PORT': '3306',
     }
