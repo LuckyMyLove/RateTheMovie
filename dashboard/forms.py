@@ -1,6 +1,9 @@
 from django import forms
 from django.template.defaultfilters import safe
 from .models import Actors, Directors, Movies, Categories, ActorsRates, DirectorsRates, MoviesRates
+from datetime import date
+
+todayDate = date.today().strftime("%Y-%m-%d")
 
 
 class actorsForm(forms.ModelForm):
@@ -26,7 +29,7 @@ class directorsForm(forms.ModelForm):
             'surname': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Surname', }),
             'birthday': forms.DateInput(format='%Y-%m-%d',
                                         attrs={'class': 'form-control', 'placeholder': 'YYYY-MM-DD',
-                                               'type': 'date'}),
+                                               'type': 'date', 'max': todayDate}),
             'photo': forms.URLInput(attrs={'class': 'form-control', 'placeholder': 'Photo URL', 'type': 'url'}),
         }
 
@@ -37,9 +40,6 @@ class moviesForm(forms.ModelForm):
     directors = forms.ModelChoiceField(queryset=Directors.objects.all(),
                                        widget=forms.Select(attrs={'class': 'form-control', 'placeholder': 'Directors'}))
 
-    # directors = forms.MultipleChoiceField(queryset=Directors.objects.all(),
-    #                                           widget=forms.CheckboxSelectMultiple(attrs={'class': 'form-control', 'placeholder': 'Directors'}))
-
     class Meta:
         model = Movies
         fields = "__all__"
@@ -48,7 +48,7 @@ class moviesForm(forms.ModelForm):
             'description': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Description', }),
             'premier_date': forms.DateInput(format=('%Y-%m-%d'),
                                             attrs={'class': 'form-control', 'placeholder': 'Premiere Date',
-                                                   'type': 'date'}),
+                                                   'type': 'date', 'max': todayDate}),
             'category': forms.Select(attrs={'class': 'form-control', 'placeholder': 'Category'}),
             'picture': forms.URLInput(attrs={'class': 'form-control', 'placeholder': 'Picture URL', 'type': 'url'}),
         }
