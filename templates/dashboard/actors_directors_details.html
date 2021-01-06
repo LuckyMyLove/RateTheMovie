@@ -46,8 +46,25 @@
 
 {% block contentSection %}
 {% if 'actors' in request.path %} {# If it's Actors site #}
-<button class="list-group-item list-group-item-light text-left">Rate the Actor</button>
+<button class="list-group-item list-group-item-light text-left" data-toggle="collapse" data-target="#ratingFilter" data-parent="#sideMenu">Rate the Actor</button>
+<div id="ratingFilter" class="sublinks collapse">
+    <form name="new_rate" method="POST">
+        {% csrf_token %}
+        {{ rating_form.as_p }}
+        <div class="text-right">
+            <button type="submit" class="btn btn-success">Save</button>
+        </div>
+    </form>
+</div>
 {% elif 'directors' in request.path %} {# If it's Directors site #}
-<button class="list-group-item list-group-item-light text-left">Rate the Director</button>
+<button class="list-group-item list-group-item-light text-left" data-toggle="collapse" data-target="#ratingFilter" data-parent="#sideMenu">Rate the Director</button>
+    <div id="ratingFilter" class="sublinks collapse">
+    {% for i in '0123456789'|make_list %}
+        <button class="fa fa-star"></button>
+    {% endfor %}
+    <div class="text-right">
+      <button type="submit" class="btn btn-success">Save</button>
+    </div>
+</div>
 {% endif %}
 {% endblock contentSection %}

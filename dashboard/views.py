@@ -118,6 +118,7 @@ def actors(request):
 
 class actorsDetails(DetailView):
     model = Actors
+    rating_form = ratingForm()
     template_name = 'dashboard/actors_directors_details.html'
 
     def get_context_data(self, **kwargs):
@@ -125,9 +126,22 @@ class actorsDetails(DetailView):
         context['rates'] = ActorsRates.objects.all().values('actors_id').annotate(avg_rate=Avg('rate'))
         context['specificRates'] = ActorsRates.objects.filter(actors_id=self.kwargs.get('pk', 0))
         context['moviesConnection'] = MoviesActors.objects.filter(actor_id=self.kwargs.get('pk', 0))
-
+        context['rating_form'] = ratingForm
 
         return context
+
+    def post(self, request, *args, **kwargs):
+        form = ratingForm(request.POST)
+        actors_rate = ActorsRates()
+        if form.is_valid():
+            actors_rate.actors_id = kwargs['pk']
+            actors_rate.rate = form.data.get('rate')
+            actors_rate.description = form.data.get('description')
+            actors_rate.user_id = request.user.id
+            actors_rate.save()
+
+        return HttpResponseRedirect("/actors/"+str(kwargs['pk']))
+
 
 
 def directors(request):
