@@ -133,7 +133,7 @@ class actorsDetails(DetailView):
     def post(self, request, *args, **kwargs):
         form = ratingForm(request.POST)
         actors_rate = ActorsRates()
-        if form.is_valid():
+        if form.is_valid() and request.user.is_authenticated:
             actors_rate.actors_id = kwargs['pk']
             actors_rate.rate = form.data.get('rate')
             actors_rate.description = form.data.get('description')

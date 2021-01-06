@@ -82,10 +82,6 @@ class ratingForm(forms.ModelForm):
                              widget=forms.Select(attrs={'class': 'form-control'}),
                              label="Rating")
 
-    # def clean_actors(self):
-    #     data = self.cleaned_data['actors'] = 3
-    #     return data
-
     class Meta:
         model = ActorsRates
         fields = "__all__"
