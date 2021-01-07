@@ -23,13 +23,6 @@ posts = [
 ]
 
 
-def home(request):
-    context = {
-        'posts': posts
-    }
-    return render(request, 'dashboard/home.html', context)
-
-
 def about(request):
     return render(request, 'dashboard/about.html', {'title': 'About Us'})
 

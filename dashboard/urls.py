@@ -11,5 +11,4 @@ urlpatterns = [
     path('actors/<int:pk>/', actorsDetails.as_view(), name='actorsDetails'),
     path('directors/', views.directors, name='directors'),
     path('directors/<int:pk>/', directorsDetails.as_view(), name='directorsDetails'),
-    path('home/', views.home, name='home'),
 ]
