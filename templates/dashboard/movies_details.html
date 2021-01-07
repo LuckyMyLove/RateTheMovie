@@ -47,7 +47,7 @@
       {% if specificRates %}
       <h5 class="pt-2">Opinions: </h5>
       {% for singleRate in specificRates %}
-      <p> {{ singleRate.user.username }} ({{ singleRate.rate }}<span class="fa fa-star checked"></span>):
+      <p> {{ singleRate.user.username }} ({{ singleRate.rate }}<span class="fa fa-star checked"></span>)
         <i>{{ singleRate.description }}</i></p>
       {% endfor %}
       {% endif %}
