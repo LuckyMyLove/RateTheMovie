@@ -138,7 +138,7 @@ STATICFILES_DIRS = (
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-LOGIN_REDIRECT_URL = 'home'
+LOGIN_REDIRECT_URL = 'movies'
 LOGIN_URL = 'login'
 DATE_FORMAT = 'd b Y'
 DATE_INPUT_FORMATS = ['%Y-%m-%d']

@@ -7,24 +7,8 @@ from .models import *
 from .forms import *
 
 
-posts = [
-    {
-        'author': 'Corey',
-        'title': 'Blog Post 1',
-        'content': 'First Post',
-        'date_posted': 'August 27, 2010'
-    },
-    {
-        'author': 'Jane Doe',
-        'title': 'Blog Post 1',
-        'content': 'Second Post',
-        'date_posted': 'August 28, 2010'
-    }
-]
-
-
 def about(request):
-    return render(request, 'dashboard/about.html', {'title': 'About Us'})
+    return render(request, 'dashboard/about.html', {'functions': ['Developers', 'Designers', 'Testers']})
 
 
 def movies(request):

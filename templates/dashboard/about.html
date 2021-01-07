@@ -1,6 +1,12 @@
 {% extends "dashboard/base.html" %}
 {% block content %}
-    <h2>Developers</h2>
-    <h3>Jędrzej Jagiełło</h3>
-    <h3>Sebastian Szafrański</h3>
+    <article class="media content-section col-12 mr-3">
+        <div class="media-body">
+            <h2>About</h2>
+            {% for function in functions %}
+                <p><b>{{ function}}:</b> Jędrzej Jagiełło & Sebastian Szafrański</p>
+            {% endfor %}
+       </div>
+    </article>
+
 {% endblock content %}
