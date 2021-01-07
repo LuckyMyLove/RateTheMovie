@@ -18,7 +18,7 @@ class Actors(models.Model):
 
 class ActorsRates(models.Model):
     actors = models.ForeignKey(Actors, models.DO_NOTHING)
-    user = models.ForeignKey('Users', models.DO_NOTHING)
+    user = models.ForeignKey('AuthUser', models.DO_NOTHING)
     rate = models.IntegerField()
     description = models.TextField(blank=True, null=True)
 
@@ -54,7 +54,7 @@ class Directors(models.Model):
 
 class DirectorsRates(models.Model):
     director = models.ForeignKey(Directors, models.DO_NOTHING)
-    user = models.ForeignKey('Users', models.DO_NOTHING)
+    user = models.ForeignKey('AuthUser', models.DO_NOTHING)
     rate = models.IntegerField()
     description = models.TextField(blank=True, null=True)
 
@@ -110,18 +110,6 @@ class Roles(models.Model):
     class Meta:
         managed = False
         db_table = 'Roles'
-
-
-class Users(models.Model):
-    username = models.TextField()
-    password = models.TextField()
-    firstname = models.TextField()
-    surname = models.TextField()
-    role = models.ForeignKey(Roles, models.DO_NOTHING)
-
-    class Meta:
-        managed = False
-        db_table = 'Users'
 
 
 class AuthGroup(models.Model):
