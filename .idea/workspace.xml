@@ -17,7 +17,7 @@
   <component name="ChangeListManager">
     <list default="true" id="6be1ac9f-82c1-4038-a4b3-45f57cdb5a20" name="Default Changelist" comment="Small CSS fix for heroku v.2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RateTheMovie/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/RateTheMovie/settings.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -194,6 +194,8 @@
       <workItem from="1609956065046" duration="12000" />
       <workItem from="1609956077718" duration="1594000" />
       <workItem from="1609977812147" duration="981000" />
+      <workItem from="1610016006233" duration="228000" />
+      <workItem from="1610016246870" duration="130000" />
     </task>
     <task id="LOCAL-00001" summary="models.py update">
       <created>1606857183006</created>
@@ -297,26 +299,26 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="636" y="310" key="Github.ShareDialog/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1604831427373" />
-    <state width="1493" height="221" key="GridCell.Tab.0.bottom" timestamp="1609956761764">
+    <state width="1493" height="220" key="GridCell.Tab.0.bottom" timestamp="1610016234989">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1493" height="162" key="GridCell.Tab.0.bottom/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1605570768925" />
-    <state width="1493" height="221" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1609956761764" />
-    <state width="1493" height="221" key="GridCell.Tab.0.center" timestamp="1609956761764">
+    <state width="1493" height="220" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1610016234989" />
+    <state width="1493" height="220" key="GridCell.Tab.0.center" timestamp="1610016234989">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1493" height="162" key="GridCell.Tab.0.center/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1605570768925" />
-    <state width="1493" height="221" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1609956761764" />
-    <state width="1493" height="221" key="GridCell.Tab.0.left" timestamp="1609956761763">
+    <state width="1493" height="220" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1610016234989" />
+    <state width="1493" height="220" key="GridCell.Tab.0.left" timestamp="1610016234989">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1493" height="162" key="GridCell.Tab.0.left/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1605570768924" />
-    <state width="1493" height="221" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1609956761763" />
-    <state width="1493" height="221" key="GridCell.Tab.0.right" timestamp="1609956761764">
+    <state width="1493" height="220" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1610016234989" />
+    <state width="1493" height="220" key="GridCell.Tab.0.right" timestamp="1610016234989">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1493" height="162" key="GridCell.Tab.0.right/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1605570768925" />
-    <state width="1493" height="221" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1609956761764" />
+    <state width="1493" height="220" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1610016234989" />
     <state width="1493" height="218" key="GridCell.Tab.1.bottom" timestamp="1609955982506">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
