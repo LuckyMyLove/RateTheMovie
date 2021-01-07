@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 import os
 from pathlib import Path
 import mimetypes
+import django_heroku
 
 mimetypes.add_type("text/css", ".css", True)
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -26,7 +27,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = (os.environ.get('DEBUG_VALUE') == "True")
 
 ALLOWED_HOSTS = ['ratethemovie.herokuapp.com', '127.0.0.1']
 
@@ -143,3 +144,4 @@ LOGIN_URL = 'login'
 DATE_FORMAT = 'd b Y'
 DATE_INPUT_FORMATS = ['%Y-%m-%d']
 
+django_heroku.settings(locals())
